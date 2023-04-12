@@ -24,13 +24,10 @@ void* checkHeartbeat();
 
 
 int globalMyID = 0;
-//last time you heard from each node. TODO: you will want to monitor this
-//in order to realize when a neighbor has gotten cut off from you.
+//last time you heard from each node.
 struct timeval globalLastHeartbeat[256];
 
-//our all-purpose UDP socket, to be bound to 10.1.1.globalMyID, port 7777
 int globalSocketUDP;
-//pre-filled for sending to 10.1.1.0 - 255, port 7777
 struct sockaddr_in globalNodeAddrs[256];
 map<int, map<int, int>> LSA;
 map<int, pair<int, int>> SP;
@@ -103,8 +100,6 @@ int main(int argc, char** argv)
 		exit(1);
 	}
 	
-	
-	//start threads... feel free to add your own, and to remove the provided ones.
 	// pthread_t announcerThread;
 	// pthread_create(&announcerThread, 0, announceToNeighbors, (void*)0);
 	thread ann(announceToNeighbors);
@@ -113,12 +108,4 @@ int main(int argc, char** argv)
 	ann.join();
 	lis.join();
 	check.join();
-
-	
-	
-	//good luck, have fun!
-	// listenForNeighbors();
-	
-	
-	
 }
