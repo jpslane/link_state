@@ -9,4 +9,4 @@ example_topology folder          example topologies
 
 Design
 -------
-Manager makes a topology of nodes and gives path cost to each node. Each node runs a link state protocol for its routing table.
+Manager makes a topology of nodes and gives path cost to each node. Each node runs a link state protocol for its routing table. Most of the implementation is contained in monitor_neighbors.hpp when it likely shouldn't be. However, it works.
